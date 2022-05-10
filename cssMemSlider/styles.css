@@ -1,2 +1,241 @@
+@import url("./normalize.css");
+
+:root {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  --animation-duration: 0.5s;
+  --main-color: #262626;
+  --badge-color: #7faae8;
+  --badge-hover-color: white;
+  --captions-color: white;
+  font-size: 14px;
+}
+
 body {
+  background-color: var(--main-color);
+}
+
+.wrapper {
+  max-width: 1200px;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+  height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.slider {
+  width: 70%;
+  height: 70%;
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 100%;
+  min-width: 300px;
+}
+
+.slider__control {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  min-width: 250px;
+}
+.control__caption {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.control__caption p {
+  width: 100%;
+  flex-shrink: 0;
+  font-size: 3.5rem;
+  color: var(--captions-color);
+  margin: 0;
+  transition: all 0.2s ease;
+}
+.caption-1 {
+  transform: translateX(100%);
+}
+.caption-3 {
+  transform: translateX(-100%);
+}
+.caption-4 {
+  transform: translateX(-200%);
+}
+.caption-5 {
+  transform: translateX(-300%);
+}
+.control__radio {
+  display: flex;
+  flex: 20%;
+  justify-content: center;
+}
+
+#image_1:checked ~ .control .control__radio label:nth-child(1) div:nth-child(1),
+#image_2:checked ~ .control .control__radio label:nth-child(2) div:nth-child(1),
+#image_3:checked ~ .control .control__radio label:nth-child(3) div:nth-child(1),
+#image_4:checked ~ .control .control__radio label:nth-child(4) div:nth-child(1),
+#image_5:checked
+  ~ .control
+  .control__radio
+  label:nth-child(5)
+  div:nth-child(1) {
+  background-color: transparent;
+}
+
+.control .control__radio label:hover > .control__badge {
+  border-color: var(--badge-hover-color);
+  cursor: pointer;
+}
+.control .control__radio label:hover > .control__badge {
+  border-color: var(--badge-hover-color);
+  background-color: var(--badge-hover-color);
+  cursor: pointer;
+}
+
+label {
+  transition: 0.4s ease;
+}
+label:hover {
+  cursor: pointer;
+}
+.control__badge {
+  max-width: 50px;
+  max-height: 50px;
+  width: 2vw;
+  height: 2vw;
+  margin: 0.7vw;
+  border: 2px solid var(--badge-color);
+  background-color: var(--badge-color);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.slider__item {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 1s ease;
+  border-radius: 20px;
+}
+.item-1 {
+  background-image: url("./images/1.jpg");
+  transform: translateX(100%);
+}
+.item-2 {
+  background-image: url("./images/2.jpg");
+}
+.item-3 {
+  background-image: url("./images/3.jpg");
+  transform: translateX(-100%);
+}
+.item-4 {
+  background-image: url("./images/1.jpg");
+  transform: translateX(-200%);
+}
+.item-5 {
+  background-image: url("./images/2.jpg");
+  transform: translateX(-300%);
+}
+
+#image_1:checked ~ .slider__control > .control__caption > .caption-1 {
+  animation: first var(--animation-duration) forwards;
+}
+#image_2:checked ~ .slider__control > .control__caption > .caption-2 {
+  animation: second var(--animation-duration) forwards;
+}
+#image_3:checked ~ .slider__control > .control__caption > .caption-3 {
+  animation: third var(--animation-duration) forwards;
+}
+#image_4:checked ~ .slider__control > .control__caption > .caption-4 {
+  animation: fourth var(--animation-duration) forwards;
+}
+#image_5:checked ~ .slider__control > .control__caption > .caption-5 {
+  animation: fifth var(--animation-duration) forwards;
+}
+
+#image_1:checked ~ .slider > .item-1 {
+  animation: first var(--animation-duration) forwards;
+}
+#image_2:checked ~ .slider > .item-2 {
+  animation: second var(--animation-duration) forwards;
+}
+#image_3:checked ~ .slider > .item-3 {
+  animation: third var(--animation-duration) forwards;
+}
+#image_4:checked ~ .slider > .item-4 {
+  animation: fourth var(--animation-duration) forwards;
+}
+
+#image_5:checked ~ .slider > .item-5 {
+  animation: fifth var(--animation-duration) forwards;
+}
+
+@keyframes first {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes second {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes third {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+@keyframes fourth {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+@keyframes fifth {
+  0% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-400%);
+  }
+}
+
+@media (max-width: 900px) {
+  .slider {
+    height: 80vw;
+  }
+  .control__caption p {
+    font-size: 6vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .control__caption p {
+    font-size: 1.7rem;
+  }
 }
