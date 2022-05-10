@@ -1,13 +1,18 @@
 @import url("./normalize.css");
+@font-face {
+  font-family: "Montserrat_400";
+  src: url("./fonts/MontserratAlternates-Regular.ttf");
+}
 
 :root {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  --animation-duration: 0.5s;
+  --animation-duration: 0.4s;
   --main-color: #262626;
   --badge-color: #7faae8;
   --badge-hover-color: white;
   --captions-color: white;
+  --active-bage: #999999;
   font-size: 14px;
 }
 
@@ -38,7 +43,8 @@ input[type="radio"] {
   margin: 0 auto;
   overflow: hidden;
   max-width: 100%;
-  min-width: 300px;
+  box-shadow: 5px 5px 22px #000000, -5px -5px 22px #000000;
+  border-radius: 20px;
 }
 
 .slider__control {
@@ -56,24 +62,28 @@ input[type="radio"] {
   overflow: hidden;
 }
 .control__caption p {
-  width: 100%;
+  width: 95%;
   flex-shrink: 0;
-  font-size: 3.5rem;
+  font-family: "Montserrat_400";
+  font-size: 2rem;
   color: var(--captions-color);
   margin: 0;
   transition: all 0.2s ease;
 }
 .caption-1 {
-  transform: translateX(100%);
+  transform: translateX(110%);
+}
+.caption-2 {
+  transform: translateX(10%);
 }
 .caption-3 {
-  transform: translateX(-100%);
+  transform: translateX(-90%);
 }
 .caption-4 {
-  transform: translateX(-200%);
+  transform: translateX(-190%);
 }
 .caption-5 {
-  transform: translateX(-300%);
+  transform: translateX(-290%);
 }
 .control__radio {
   display: flex;
@@ -109,16 +119,22 @@ label {
 label:hover {
   cursor: pointer;
 }
+.control .control__radio label:active > .control__badge {
+  background-color: var(--active-bage);
+  border-color: var(--active-bage);
+}
 .control__badge {
-  max-width: 50px;
-  max-height: 50px;
-  width: 2vw;
-  height: 2vw;
-  margin: 0.7vw;
+  max-width: 10px;
+  max-height: 10px;
+  width: 1.5vw;
+  height: 1.5vw;
+  margin: 0.5vw;
   border: 2px solid var(--badge-color);
   background-color: var(--badge-color);
   border-radius: 50%;
   transition: all 0.4s ease;
+  min-width: 10px;
+  min-height: 10px;
 }
 
 .slider__item {
@@ -130,25 +146,27 @@ label:hover {
   background-size: cover;
   transition: 1s ease;
   border-radius: 20px;
+  box-shadow: inset 20px -20px 20px #ffa013, inset -20px 20px 20px #ff4b88;
 }
 .item-1 {
   background-image: url("./images/1.jpg");
-  transform: translateX(100%);
+  transform: translateX(110%);
 }
 .item-2 {
   background-image: url("./images/2.jpg");
+  transform: translateX(10%);
 }
 .item-3 {
   background-image: url("./images/3.jpg");
-  transform: translateX(-100%);
+  transform: translateX(-90%);
 }
 .item-4 {
-  background-image: url("./images/1.jpg");
-  transform: translateX(-200%);
+  background-image: url("./images/4.jpg");
+  transform: translateX(-190%);
 }
 .item-5 {
-  background-image: url("./images/2.jpg");
-  transform: translateX(-300%);
+  background-image: url("./images/5.jpg");
+  transform: translateX(-290%);
 }
 
 #image_1:checked ~ .slider__control > .control__caption > .caption-1 {
@@ -186,7 +204,7 @@ label:hover {
 
 @keyframes first {
   0% {
-    transform: translateX(100%);
+    transform: translateX(90%);
   }
   100% {
     transform: translateX(0%);
@@ -202,7 +220,7 @@ label:hover {
 }
 @keyframes third {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-90%);
   }
   100% {
     transform: translateX(-200%);
@@ -210,7 +228,7 @@ label:hover {
 }
 @keyframes fourth {
   0% {
-    transform: translateX(-200%);
+    transform: translateX(-190%);
   }
   100% {
     transform: translateX(-300%);
@@ -218,24 +236,28 @@ label:hover {
 }
 @keyframes fifth {
   0% {
-    transform: translateX(-300%);
+    transform: translateX(-290%);
   }
   100% {
     transform: translateX(-400%);
   }
 }
 
-@media (max-width: 900px) {
-  .slider {
-    height: 80vw;
+@media (max-width: 760px) {
+  .slider__control {
+    flex-direction: column-reverse;
+    margin: 15px;
   }
-  .control__caption p {
-    font-size: 6vw;
+  .control__radio {
+    margin-bottom: 10px;
+  }
+  .slider__item {
+    box-shadow: inset 10px -10px 10px #ffa013, inset -10px 10px 10px #ff4b88;
   }
 }
 
-@media (max-width: 320px) {
-  .control__caption p {
-    font-size: 1.7rem;
+@media (max-width: 900px) {
+  .slider {
+    height: 80vw;
   }
 }
