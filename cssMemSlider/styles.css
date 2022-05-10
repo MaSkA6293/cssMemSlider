@@ -3,6 +3,10 @@
   font-family: "Montserrat_400";
   src: url("./fonts/MontserratAlternates-Regular.ttf");
 }
+@font-face {
+  font-family: "DancingScript-400";
+  src: url("./fonts/DancingScript-Regular.ttf");
+}
 
 :root {
   box-sizing: border-box;
@@ -13,6 +17,9 @@
   --badge-hover-color: white;
   --captions-color: white;
   --active-bage: #999999;
+  --second-color: #ffad70;
+  --shadow-one: #ffa013;
+  --shadow-two: #ff4b88;
   font-size: 14px;
 }
 
@@ -39,6 +46,7 @@ input[type="radio"] {
 .slider {
   width: 70%;
   height: 70%;
+  min-height: 200px;
   display: flex;
   margin: 0 auto;
   overflow: hidden;
@@ -146,7 +154,8 @@ label:hover {
   background-size: cover;
   transition: 1s ease;
   border-radius: 20px;
-  box-shadow: inset 20px -20px 20px #ffa013, inset -20px 20px 20px #ff4b88;
+  box-shadow: inset 20px -20px 20px var(--shadow-one),
+    inset -20px 20px 20px var(--shadow-two);
 }
 .item-1 {
   background-image: url("./images/1.jpg");
@@ -202,6 +211,20 @@ label:hover {
   animation: fifth var(--animation-duration) forwards;
 }
 
+header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: var(--second-color);
+  font-family: DancingScript-400;
+  font-size: 3rem;
+  margin: 20px auto;
+}
+
 @keyframes first {
   0% {
     transform: translateX(90%);
@@ -252,7 +275,11 @@ label:hover {
     margin-bottom: 10px;
   }
   .slider__item {
-    box-shadow: inset 10px -10px 10px #ffa013, inset -10px 10px 10px #ff4b88;
+    box-shadow: inset 10px -10px 10px var(--shadow-one),
+      inset -10px 10px 10px var(--shadow-two);
+  }
+  :root {
+    font-size: 12px;
   }
 }
 
